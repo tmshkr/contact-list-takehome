@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function ContactTableRow({ contacts, setContacts, index }) {
   const [isEditing, setIsEditing] = useState(false);
+  const nameRef = useRef(null);
   const contact = contacts[index];
   const handleChange = (e) => {
     const updatedContacts = [...contacts];
@@ -14,6 +15,12 @@ export default function ContactTableRow({ contacts, setContacts, index }) {
     document.removeEventListener("click", handleClickOff);
   };
 
+  useEffect(() => {
+    if (isEditing) {
+      nameRef.current.focus();
+    }
+  }, [isEditing]);
+
   return (
     <tr
       key={contact.id}
@@ -25,6 +32,7 @@ export default function ContactTableRow({ contacts, setContacts, index }) {
       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
         {isEditing ? (
           <input
+            ref={nameRef}
             name="name"
             className="max-w-full w-full"
             value={contact.name}
@@ -50,8 +58,8 @@ export default function ContactTableRow({ contacts, setContacts, index }) {
         <button
           onClick={(e) => {
             e.stopPropagation();
-            setIsEditing(!isEditing);
             document.addEventListener("click", handleClickOff);
+            setIsEditing(!isEditing);
           }}
           className="text-indigo-600 hover:text-indigo-900"
         >
