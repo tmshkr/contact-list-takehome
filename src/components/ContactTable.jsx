@@ -1,6 +1,6 @@
 import ContactTableRow from "./ContactTableRow";
 
-export default function ContactTable({ contacts }) {
+export default function ContactTable({ contacts, setContacts }) {
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center justify-between">
@@ -42,8 +42,11 @@ export default function ContactTable({ contacts }) {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {contacts.map((contact) => (
-                    <ContactTableRow key={contact.id} {...{ contact }} />
+                  {contacts.map((contact, index) => (
+                    <ContactTableRow
+                      key={contact.id}
+                      {...{ contacts, setContacts, index }}
+                    />
                   ))}
                 </tbody>
               </table>

@@ -1,10 +1,12 @@
 import { useState } from "react";
 
-export default function ContactTableRow({ contact: propsContact }) {
+export default function ContactTableRow({ contacts, setContacts, index }) {
   const [isEditing, setIsEditing] = useState(false);
-  const [contact, setContact] = useState(propsContact);
+  const contact = contacts[index];
   const handleChange = (e) => {
-    setContact({ ...contact, [e.target.name]: e.target.value });
+    const updatedContacts = [...contacts];
+    updatedContacts[index] = { ...contact, [e.target.name]: e.target.value };
+    setContacts(updatedContacts);
   };
 
   return (

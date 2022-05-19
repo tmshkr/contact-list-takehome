@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <div className="App p-5">
-      <ContactTable {...{ contacts }} />
+      <ContactTable {...{ contacts, setContacts }} />
       <h2>Add Contact</h2>
       <div>TODO: Interface to add a contact</div>
     </div>
