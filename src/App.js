@@ -1,7 +1,7 @@
 import "./styles.css";
 
 import { useState } from "react";
-import Table from "./components/Table";
+import ContactTable from "./components/ContactTable";
 
 export default function App() {
   const contactList = [
@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <div className="App p-5">
-      <Table {...{ contacts }} />
+      <ContactTable {...{ contacts }} />
       <h2>Add Contact</h2>
       <div>TODO: Interface to add a contact</div>
     </div>
