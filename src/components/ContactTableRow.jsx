@@ -9,8 +9,19 @@ export default function ContactTableRow({ contacts, setContacts, index }) {
     setContacts(updatedContacts);
   };
 
+  const handleClickOff = (e) => {
+    setIsEditing(false);
+    document.removeEventListener("click", handleClickOff);
+  };
+
   return (
-    <tr key={contact.id}>
+    <tr
+      key={contact.id}
+      id={contact.id}
+      onClick={(e) => {
+        if (isEditing) e.stopPropagation();
+      }}
+    >
       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
         {isEditing ? (
           <input
@@ -37,7 +48,11 @@ export default function ContactTableRow({ contacts, setContacts, index }) {
       </td>
       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
         <button
-          onClick={() => setIsEditing(!isEditing)}
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsEditing(!isEditing);
+            document.addEventListener("click", handleClickOff);
+          }}
           className="text-indigo-600 hover:text-indigo-900"
         >
           {isEditing ? "Editing" : "Edit"}
