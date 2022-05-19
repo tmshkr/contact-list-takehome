@@ -19,8 +19,11 @@ export default function AddContactForm({
   };
 
   return (
-    <div className="w-1/2 m-auto mt-36">
-      <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+    <div className="p-4 w-96 max-w-full m-auto mt-36">
+      <label
+        htmlFor="name"
+        className="mt-3 block text-sm font-medium text-gray-700"
+      >
         Name
       </label>
       <div className="mt-1">
@@ -36,7 +39,7 @@ export default function AddContactForm({
       </div>
       <label
         htmlFor="phone"
-        className="block text-sm font-medium text-gray-700"
+        className="mt-3 block text-sm font-medium text-gray-700"
       >
         Phone
       </label>
