@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles.css";
 
-function App() {
+import { useState } from "react";
+
+export default function App() {
+  const contactList = [
+    { id: 1, name: "Joe", phone: "111-222-3333" },
+    { id: 2, name: "Fred", phone: "222-444-6666" }
+  ];
+  const [contacts, setContacts] = useState(contactList);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Manage Contacts</h1>
+      <h2>Contact List</h2>
+      <div>
+        TODO: List Contacts here showing name and phone, with edit button for
+        each contact
+      </div>
+      <h2>Add Contact</h2>
+      <div>TODO: Interface to add a contact</div>
     </div>
   );
 }
-
-export default App;
