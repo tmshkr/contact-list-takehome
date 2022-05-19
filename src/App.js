@@ -16,7 +16,7 @@ export default function App() {
   }
 
   return (
-    <div className="p-5">
+    <div className="p-5 max-w-3xl m-auto">
       <div className="sm:flex sm:items-center justify-between">
         <h1 className="text-xl font-semibold text-gray-900">Manage Contacts</h1>
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
