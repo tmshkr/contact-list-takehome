@@ -1,5 +1,3 @@
-import "./styles.css";
-
 import { useState } from "react";
 import ContactTable from "./components/ContactTable";
 import AddContactForm from "./components/AddContactForm";
