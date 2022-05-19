@@ -1,19 +1,34 @@
 import { useState } from "react";
 
-export default function ContactTableRow({ contact }) {
+export default function ContactTableRow({ contact: propsContact }) {
   const [isEditing, setIsEditing] = useState(false);
+  const [contact, setContact] = useState(propsContact);
+  const handleChange = (e) => {
+    setContact({ ...contact, [e.target.name]: e.target.value });
+  };
+
   return (
     <tr key={contact.id}>
       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
         {isEditing ? (
-          <input className="max-w-full w-full" value={contact.name} />
+          <input
+            name="name"
+            className="max-w-full w-full"
+            value={contact.name}
+            onChange={handleChange}
+          />
         ) : (
           contact.name
         )}
       </td>
       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
         {isEditing ? (
-          <input className="max-w-full w-full" value={contact.phone} />
+          <input
+            name="phone"
+            className="max-w-full w-full"
+            value={contact.phone}
+            onChange={handleChange}
+          />
         ) : (
           contact.phone
         )}
